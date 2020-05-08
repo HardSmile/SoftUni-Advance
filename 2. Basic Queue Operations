@@ -1,0 +1,43 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _2._Basic_Queue_Operations
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] input = Console.ReadLine().Split(" ").Select(int.Parse).ToArray();
+            int numbersOfStack = input[0];
+            int dequeueElements = input[1];
+            int yourElement = input[2];
+            int[] enqueueElements = Console.ReadLine().Split(" ").Select(int.Parse).ToArray();
+            Queue<int> queue = new Queue<int>();
+            for (int i = 0; i < enqueueElements.Length; i++)
+            {
+                queue.Enqueue(enqueueElements[i]);
+            }
+            for (int i = 0; i < dequeueElements; i++)
+            {
+                queue.Dequeue();
+            }
+
+            if (queue.Contains(yourElement))
+            {
+                Console.WriteLine("true");
+            }
+            else if (queue.Count <= 0)
+            {
+                Console.WriteLine("0");
+            }
+            else
+            {
+                Console.WriteLine(queue.Min());
+            }
+
+
+        }
+    }
+}
