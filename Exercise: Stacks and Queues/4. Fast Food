@@ -1,0 +1,58 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace _4._Fast_Food
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int biggestOrder = 0;
+            int foodOwned = int.Parse(Console.ReadLine());
+
+            int[] orders = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            Queue<int> queue = new Queue<int>(orders);
+            bool complet = true;
+            int sum = 0;
+
+
+            for (int i = 0; i < orders.Length; i++)
+            {
+                int addOrder = orders[i];
+                sum += addOrder;
+                if (biggestOrder < addOrder)
+                {
+                    biggestOrder = addOrder;
+                }
+                if (foodOwned >= sum)
+                {
+                    queue.Dequeue();
+                    complet = true;
+                }
+                else
+                {
+                   complet = false;
+                }
+
+            }
+
+            Console.WriteLine(biggestOrder);
+            if (complet)
+            {
+                Console.WriteLine("Orders complete");
+            }
+            else
+            {
+                Console.Write("Orders left: ");
+                foreach (var or in queue)
+                {
+                    Console.Write($"{or} ");
+                }
+            }
+
+
+        }
+    }
+}
