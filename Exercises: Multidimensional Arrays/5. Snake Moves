@@ -1,0 +1,62 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _5._Snake_Moves
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] input = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            int rows = input[0];
+            int cols = input[1];
+            char[,] matrix = new char[rows, cols];
+           int counter = 0;
+            string snake = Console.ReadLine();
+            Queue<char> queue = new Queue<char>();
+            int capacity = rows * cols;
+            for (int i = 0; i < snake.Length; i++)
+            {
+                queue.Enqueue(snake[i]);
+                counter++;
+
+                if (counter == capacity)
+                {
+                    break;
+                }
+                if (i == snake.Length - 1)
+                {
+                    i = -1;
+                }
+            }
+            for (int row = 0; row < rows; row++)
+            {
+                if (row % 2 == 0)
+                {
+                    for (int col = 0; col < cols; col++)
+                    {
+                        matrix[row, col] = queue.Dequeue();
+                    }
+                }
+                else if (row % 2 != 0)
+                {
+                    for (int i = cols - 1; i > -1; i--)
+                    {
+                        matrix[row, i] = queue.Dequeue();
+                    }
+                }
+
+            }
+            for (int row = 0; row < rows; row++)
+            {
+                for (int col = 0; col < cols; col++)
+                {
+                    Console.Write(matrix[row, col]);
+                }
+
+                Console.WriteLine();
+            }
+        }
+    }
+}
