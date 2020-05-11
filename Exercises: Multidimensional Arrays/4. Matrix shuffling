@@ -1,0 +1,62 @@
+using System;
+using System.Linq;
+
+namespace _4._Matrix_shuffling
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] input = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            int rows = input[0];
+            int cols = input[1];
+            string[,] matrix = new string[rows, cols];
+            for (int row = 0; row < rows; row++)
+            {
+                string[] readMatrix = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries).ToArray();
+                for (int col = 0; col < cols; col++)
+                {
+                    matrix[row, col] = readMatrix[col];
+                }
+            }
+            while (true)
+            {
+                string[] command = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                string getCommand = command[0];
+                if(getCommand == "END")
+                {
+                    break;
+                }
+               else if (getCommand != "swap" ||command.Length != 5 )
+                {
+                    Console.WriteLine("Invalid input!");
+                }
+                else if (getCommand == "swap")
+                {
+                    int firstRow = int.Parse(command[1]);
+                    int firstCol = int.Parse(command[2]);
+                    int secRow = int.Parse(command[3]);
+                    int secCol = int.Parse(command[4]);
+                    if (matrix.GetLength(0) < firstCol && matrix.GetLength(1) < secCol)
+                    {
+                        Console.WriteLine("Invalid input!");
+                        continue;
+                    }
+                    string temp = matrix[firstRow, firstCol];
+                    matrix[firstRow, firstCol] = matrix[secRow, secCol];
+                    matrix[secRow, secCol] = temp;
+                    for (int row = 0; row < rows; row++)
+                    {
+                        for (int col = 0; col < cols; col++)
+                        {
+                            Console.Write(matrix[row,col] + " ") ;
+                        }
+                        Console.WriteLine();
+                    }
+                }
+                
+            }
+          
+        }
+    }
+}
