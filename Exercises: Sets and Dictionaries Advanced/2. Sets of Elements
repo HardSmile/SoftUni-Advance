@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _2._Sets_of_Elements
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] input = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            int firstLenght = input[0];
+            int secondLenght = input[1];
+            HashSet<int> numbersN = new HashSet<int>();
+            HashSet<int> numbersM = new HashSet<int>();
+            for (int i = 0; i < firstLenght; i++)
+            {
+                int readNumber = int.Parse(Console.ReadLine());
+                numbersN.Add(readNumber);
+            }
+            for (int i = 0; i < secondLenght; i++)
+            {
+                int readNumber = int.Parse(Console.ReadLine());
+                numbersM.Add(readNumber);
+            }
+            foreach (var number in numbersN)
+            {
+                if (numbersM.Contains(number))
+                {
+                    Console.Write(number + " ");
+                }
+            }
+        }
+    }
+}
