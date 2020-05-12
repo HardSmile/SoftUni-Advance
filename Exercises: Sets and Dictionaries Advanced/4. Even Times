@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+
+namespace _4._Even_Times
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int input = int.Parse(Console.ReadLine());
+            Dictionary<int,int> numbers = new Dictionary<int, int>();
+            for (int i = 0; i < input; i++)
+            {
+                int getNumber = int.Parse(Console.ReadLine());
+                if (!numbers.ContainsKey(getNumber))
+                {
+                    numbers.Add(getNumber, 0);
+                }
+           
+                numbers[getNumber]++;
+                
+            }
+            foreach (var item in numbers)
+            {
+                if(item.Value % 2 == 0)
+                {
+                    Console.WriteLine(item.Key);
+                }
+            }
+        }
+    }
+}
