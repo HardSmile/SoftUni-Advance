@@ -1,0 +1,72 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _6._Wardrobe
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Dictionary<string, Dictionary<string, int>> dict = new Dictionary<string, Dictionary<string, int>>();
+            int input = int.Parse(Console.ReadLine());
+            for (int i = 0; i < input; i++)
+            {
+                string[] getProduct = Console.ReadLine().Split(" -> ");
+                string color = getProduct[0];
+                string[] item = getProduct[1].Split(",");
+                if (!dict.ContainsKey(color))
+                {
+                    dict.Add(color, new Dictionary<string, int>());
+
+                    foreach (var getItems in item)
+                    {
+                        if (!dict[color].ContainsKey(getItems))
+                        {
+                            dict[color].Add(getItems, 1);
+                        }
+                        else
+                        {
+                            dict[color][getItems]++;
+                        }
+                    }
+
+                }
+                else
+                {
+                    foreach (var getItems in item)
+                    {
+                        if (!dict[color].ContainsKey(getItems))
+                        {
+                            dict[color].Add(getItems, 1);
+                        }
+                        else
+                        {
+                            dict[color][getItems]++;
+                        }
+                    }
+                }
+            }
+
+            string[] buy = Console.ReadLine().Split();
+            string buyColor = buy[0];
+            string buyItem = buy[1];
+            foreach (var getColor in dict)
+            {
+                Console.WriteLine($"{getColor.Key} clothes:");
+                foreach (var item in getColor.Value)
+                {
+                    if (buyColor == getColor.Key && buyItem == item.Key)
+                    {
+                        Console.WriteLine($"* {item.Key} - {item.Value} (found!)");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"* {item.Key} - {item.Value}");
+                    }
+                }
+            }
+        }
+    }
+}
+
