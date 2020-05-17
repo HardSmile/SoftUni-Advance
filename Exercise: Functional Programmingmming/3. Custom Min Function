@@ -1,0 +1,15 @@
+using System;
+using System.Linq;
+
+namespace _3._Custom_Min_Function
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Func<int[], int> min = number => number.Min();
+            int[] numbers = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            Console.WriteLine(min(numbers));
+        }
+    }
+}
