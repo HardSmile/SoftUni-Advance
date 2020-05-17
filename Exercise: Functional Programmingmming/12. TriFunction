@@ -1,0 +1,20 @@
+using System;
+using System.Linq;
+
+namespace _12._TriFunction
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Func<string, int, bool> isEqualOrLargerFunc = (word, criteria) => word.Sum(x => x) >= criteria;
+            int targetSum = int.Parse(Console.ReadLine());
+            string[] inputName = Console.ReadLine().Split().ToArray();
+            Func<string[], Func<string, int, bool>, string> myFunc = (names, islargerFunc) =>
+                 names.FirstOrDefault(x => islargerFunc(x, targetSum));
+            string targetName = myFunc(inputName, isEqualOrLargerFunc);
+            Console.WriteLine(targetName);
+        }
+      
+    }
+}
