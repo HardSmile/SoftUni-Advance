@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _4._Find_Evens_or_Odds
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] startAndFinish = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            string evenOrOdd = Console.ReadLine();
+            Predicate<int> isEven = number => number % 2 == 0;
+            List<int> numbers = new List<int>();
+            for (int i = startAndFinish[0]; i <= startAndFinish[1]; i++)
+            {
+                numbers.Add(i);
+            }
+            if (evenOrOdd == "even")
+            {
+                numbers.RemoveAll(x => !(isEven(x)));
+            }
+            else
+            {
+                numbers.RemoveAll(x => isEven(x));
+            }
+            Console.WriteLine(string.Join(" ", numbers));
+        }
+    }
+}
