@@ -1,0 +1,41 @@
+using System;
+using System.Linq;
+
+namespace _5._Applied_Arithmetics
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] numbers = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            Func<int, int> addFunc = num => num+=1;
+            Func<int, int> subtractFunc = num => num-=1;
+            Func<int, int> multiplyFunc = num => num *=2;
+            Action<int[]> printAction = num => Console.WriteLine(String.Join(" ",num));
+            while (true)
+            {
+                string input = Console.ReadLine();
+                if (input == "add")
+                {
+                   numbers = numbers = numbers.Select(addFunc).ToArray();
+                }
+                else if(input== "multiply")
+                {
+                   numbers = numbers.Select(multiplyFunc).ToArray();
+                }
+                else if (input == "subtract")
+                {
+                   numbers = numbers.Select(subtractFunc).ToArray();
+                }
+                else if (input == "print")
+                {
+                    printAction(numbers);
+                }
+                else if (input == "end")
+                {
+                    break;
+                }
+            }
+        }
+    }
+}
