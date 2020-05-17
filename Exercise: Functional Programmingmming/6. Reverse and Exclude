@@ -1,0 +1,24 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _6._Reverse_and_Exclude
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] readNumbers = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            Stack<int> numbers = new Stack<int>(readNumbers);
+            int divider = int.Parse(Console.ReadLine());
+            Predicate<int> isEven = number => number % divider == 0;
+            foreach (var item in numbers)
+            {
+                if (!isEven(item))
+                {
+                    Console.Write(item + " ");
+                }
+            }
+        }
+    }
+}
