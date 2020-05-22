@@ -1,5 +1,4 @@
 using System;
-
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,16 +16,8 @@ namespace _6._Songs_Queue
 
                 string command = Console.ReadLine();
                 if(command.Contains("Play"))
-                {   
-                   if (song.Count==1)
-                    {
+                { 
                         song.Dequeue();
-                  }
-                    else
-                    {   
-                        song.Dequeue();
-                    }
-
                 }
                 else if(command.Contains("Show"))
                 {
@@ -61,11 +52,8 @@ namespace _6._Songs_Queue
                         song.Enqueue(addNewSong[1]);
                        
                     }
-                   
-                 
                 }
-
-            }
+			}
             Console.WriteLine("No more songs!");
         }
     }   
