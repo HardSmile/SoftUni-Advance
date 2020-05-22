@@ -13,8 +13,7 @@ namespace _6._Songs_Queue
             Queue<string> song = new Queue<string>(songs);
             while (song.Count>0)
             {
-
-                string command = Console.ReadLine();
+	    string command = Console.ReadLine();
                 if(command.Contains("Play"))
                 { 
                         song.Dequeue();
@@ -33,14 +32,12 @@ namespace _6._Songs_Queue
                         {
                             Console.Write($"{songArray[i]}, ");
                         }
-
-                    }
+		}
                     Console.WriteLine();
                 }
                 else if (command.Contains("Add"))
                 {
-
-                    string[] addNewSong = command.Split("Add ");
+		 string[] addNewSong = command.Split("Add ");
 
                     if (song.Contains(addNewSong[1]))
                     {
@@ -48,12 +45,10 @@ namespace _6._Songs_Queue
                     }
                     else
                     {
-                     
-                        song.Enqueue(addNewSong[1]);
-                       
+		    song.Enqueue(addNewSong[1]);
                     }
                 }
-			}
+ 		}
             Console.WriteLine("No more songs!");
         }
     }   
